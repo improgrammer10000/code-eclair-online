@@ -171,7 +171,8 @@ export default function CompleteSolutionSection() {
             className="px-8 py-6 text-lg font-bold rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 shadow-2xl hover:shadow-pink-500/25 transition-all duration-300 transform hover:scale-105"
           >
             <Rocket className="mr-3 h-6 w-6" />
-            Lancer mon projet maintenant
+            <span className="hidden sm:inline">Lancer mon projet maintenant</span>
+            <span className="sm:hidden">Commencer maintenant</span>
           </Button>
 
           <div className="pt-4">

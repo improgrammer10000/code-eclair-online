@@ -219,7 +219,8 @@ export default function ResponsiveSection() {
             size="lg"
             className="px-8 py-7 text-lg font-bold rounded-full bg-gradient-to-r from-[#7740FD] to-[#AB52F1] hover:from-[#6B35E8] hover:to-[#9A47E6] shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 text-white"
           >
-            Découvrez nos designs adaptatifs
+            <span className="hidden sm:inline">Découvrez nos designs adaptatifs</span>
+            <span className="sm:hidden">Découvrez nos designs</span>
           </Button>
         </motion.div>
       </motion.div>
