@@ -1,0 +1,12 @@
+# Dépendances
+node_modules
+# Next.js
+.next
+out
+.turbo
+.vercel
+# Environnements
+.env
+.env.local
+# OS
+.DS_Store
