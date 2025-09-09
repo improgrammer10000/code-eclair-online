@@ -172,7 +172,7 @@ app.post("/api/contact", async (req, res) => {
     try {
       const confirmationSujet = "Nous avons bien reçu votre demande – Code éclair"
       const confirmationTexte = `Bonjour ${firstName || ''} ${lastName || ''},\n\nMerci pour votre message. Nous revenons vers vous sous 24h (hors dimanche).\n\n— Code éclair`
-
+      const greeting = firstName ? ", ${firstName}" : ''
       const confirmationHtml = `
       <div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;background:linear-gradient(135deg,#1f1f1f,#2a1f3a);padding:32px 16px">
         <div style="max-width:560px;margin:auto;background:#0f1220;border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden">
@@ -182,7 +182,7 @@ app.post("/api/contact", async (req, res) => {
           </div>
           <div style="padding:24px 22px;color:#e5e7eb">
             <h1 style="margin:0 0 8px;font-size:20px;font-weight:800;color:#ffffff">Votre demande a bien été reçue</h1>
-            <p style="margin:0 0 14px;line-height:1.6;color:#cbd5e1">Merci pour votre confiance${'${firstName ? `, ' + '${firstName}' + '`: ""}'} . Nous revenons vers vous sous <strong style=\"color:#fff\">24h</strong> (hors dimanche).</p>
+            <p style="margin:0 0 14px;line-height:1.6;color:#cbd5e1">Merci pour votre confiance${greeting}. Nous revenons vers vous sous <strong style=\"color:#fff\">24h</strong> (hors dimanche).</p>
             <p style="margin:0;color:#94a3b8;font-size:14px">Si besoin d’ajout d’informations, répondez directement à cet e-mail.</p>
           </div>
           <div style="padding:16px 22px;background:#0b0f1e;color:#94a3b8;text-align:center;font-size:12px">
@@ -190,7 +190,6 @@ app.post("/api/contact", async (req, res) => {
           </div>
         </div>
       </div>`
-
       await transporter.sendMail({
         from: `Code éclair <${expediteur_mail}>`,
         to: email,
