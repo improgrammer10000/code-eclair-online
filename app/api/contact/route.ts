@@ -10,37 +10,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Tous les champs obligatoires doivent être remplis" }, { status: 400 })
     }
 
-    // Ici vous pouvez utiliser un service d'email comme:
-    // - Resend (recommandé)
-    // - SendGrid
-    // - Nodemailer avec SMTP
-    // - Etc.
-
-    // Exemple avec un service d'email fictif:
-    const emailContent = `
-      Nouvelle demande de contact depuis le site Code éclair:
-      
-      Nom: ${firstName} ${lastName}
-      Email: ${email}
-      Téléphone: ${phone}
-      
-      Description du projet:
-      ${projectDescription || "Aucune description fournie"}
-      
-      ---
-      Envoyé depuis le formulaire de contact du site
-    `
-
-    // TODO: Remplacer par votre service d'email réel
-    console.log("Email à envoyer à contact@code-eclair.fr:", emailContent)
-
-    // Simulation d'envoi d'email
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    return NextResponse.json({
-      success: true,
-      message: "Message envoyé avec succès",
+    // Appel vers le backend Node.js
+    const backendResponse = await fetch("http://localhost:3002/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        email,
+        phone,
+        projectDescription,
+      }),
     })
+
+    const result = await backendResponse.json()
+
+    if (backendResponse.ok) {
+      return NextResponse.json({
+        success: true,
+        message: "Message envoyé avec succès",
+      })
+    } else {
+      throw new Error(result.error || "Erreur backend")
+    }
   } catch (error) {
     console.error("Erreur lors de l'envoi:", error)
     return NextResponse.json({ error: "Erreur lors de l'envoi du message" }, { status: 500 })
