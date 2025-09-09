@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // true pour 465, false pour autres ports
   auth: {
     user: "contact@code-eclair.fr",
-    pass: "9?uM0^y?L@p", // À remplacer par le vrai mot de passe
+    pass: "UN!Hxn+?p5+eKx2", // À remplacer par le vrai mot de passe
   },
 })
 

@@ -345,7 +345,7 @@ export default function LatestProjectSection() {
       {/* Video Modal */}
       {isVideoModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
-          <motion.div
+          <motion.div role="dialog" aria-modal="true" aria-label="Lecture vidéo Vroom"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
@@ -359,7 +359,7 @@ export default function LatestProjectSection() {
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <span className="text-white font-medium ml-3 text-sm md:text-base">
-                  La Grande Finale - Vroom par Thomas PAREDES
+                  Reportage - Vroom par Thomas PAREDES
                 </span>
               </div>
               <button
@@ -372,16 +372,19 @@ export default function LatestProjectSection() {
 
             {/* Video container */}
             <div className="relative flex-1 bg-black flex items-center justify-center">
-              <video
-                className="w-full h-full object-contain"
-                controls
-                autoPlay
-                preload="metadata"
-                style={{ maxHeight: "100%", maxWidth: "100%" }}
-              >
-                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/preview%20la%20grande%20finale-loC6cU3V5BYPAtCq9J1CiYLq6pKSgk.mp4" type="video/mp4" />
-                Votre navigateur ne supporte pas la lecture vidéo.
-              </video>
+              <div className="relative w-full h-full">
+                {/* wrapper responsive */}
+                <div className="absolute inset-0">
+                  <iframe
+                    className="w-full h-full"
+                    title="Reportage - Vroom par Thomas PAREDES"
+                    src="https://www.youtube.com/embed/G8p0WBgDpwg?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Footer info */}
