@@ -66,9 +66,7 @@ const ValidationUtils = {
 
     // Patterns suspects à rejeter
     const suspiciousPatterns = [
-      /^[a-z]{4,}$/, // Que des minuscules de 4+ caractères (aaaa, bbbb, etc.)
-      /^[A-Z]{4,}$/, // Que des majuscules de 4+ caractères
-      /^(.)\1{3,}$/, // Même caractère répété 4+ fois
+      /([A-Za-zÀ-ÿ])\1{2,}/, // 3+ mêmes lettres consécutives n'importe où dans le nom
       /^[a-zA-Z]+-[a-zA-Z]+-[a-zA-Z]+/, // Trop de tirets (jhjhj-fdksj-a)
       /^[qwerty]{4,}$/i, // Séquences clavier
       /^[asdf]{4,}$/i, // Séquences clavier
