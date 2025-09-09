@@ -19,7 +19,7 @@ app.use(
 )
 
 // Configuration Hostinger SMTP
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   host: "smtp.hostinger.com", // SMTP Hostinger
   port: 587,
   secure: false, // true pour 465, false pour autres ports
