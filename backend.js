@@ -172,7 +172,7 @@ app.post("/api/contact", async (req, res) => {
     try {
       const confirmationSujet = "Nous avons bien reçu votre demande – Code éclair"
       const confirmationTexte = `Bonjour ${firstName || ''} ${lastName || ''},\n\nMerci pour votre message. Nous revenons vers vous sous 24h (hors dimanche).\n\n— Code éclair`
-      const greeting = firstName ? ", ${firstName}" : ''
+      const greeting = firstName ? `, ${firstName}` : ''
       const confirmationHtml = `
       <div style="font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;background:linear-gradient(135deg,#1f1f1f,#2a1f3a);padding:32px 16px">
         <div style="max-width:560px;margin:auto;background:#0f1220;border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden">
