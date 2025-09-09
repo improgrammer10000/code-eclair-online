@@ -1,15 +1,16 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Rocket, ArrowRight } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
+import ContactFormModal from "./contact-form-modal"
 
 export default function CompleteSolutionSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -167,6 +168,7 @@ export default function CompleteSolutionSection() {
         {/* CTA Buttons */}
         <motion.div variants={itemVariants} className="space-y-6">
           <Button
+            onClick={() => setIsContactModalOpen(true)}
             size="lg"
             className="px-8 py-6 text-lg font-bold rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 shadow-2xl hover:shadow-pink-500/25 transition-all duration-300 transform hover:scale-105"
           >
@@ -176,16 +178,17 @@ export default function CompleteSolutionSection() {
           </Button>
 
           <div className="pt-4">
-            <Link
-              href="#services"
+            <button
+              onClick={() => setIsContactModalOpen(true)}
               className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300 text-lg group"
             >
               Découvrir le détail de notre offre
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            </button>
           </div>
         </motion.div>
       </motion.div>
+      <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>
   )
 }

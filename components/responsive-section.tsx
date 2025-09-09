@@ -1,14 +1,16 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Smartphone, Tablet, Monitor, Users, TrendingUp, Shield } from "lucide-react"
 import Image from "next/image"
+import ContactFormModal from "./contact-form-modal"
 
 export default function ResponsiveSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -216,6 +218,7 @@ export default function ResponsiveSection() {
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
           <Button
+            onClick={() => setIsContactModalOpen(true)}
             size="lg"
             className="px-8 py-7 text-lg font-bold rounded-full bg-gradient-to-r from-[#7740FD] to-[#AB52F1] hover:from-[#6B35E8] hover:to-[#9A47E6] shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 text-white"
           >
@@ -224,6 +227,8 @@ export default function ResponsiveSection() {
           </Button>
         </motion.div>
       </motion.div>
+      {/* Contact Form Modal */}
+      <ContactFormModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </section>
   )
 }

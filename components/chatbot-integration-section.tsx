@@ -2,14 +2,16 @@
 
 import Image from "next/image"
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bot, MessageSquare, ShieldCheck, TrendingUp, Plug, Layers } from "lucide-react"
+import ContactFormModal from "./contact-form-modal"
 
 export default function ChatbotIntegrationSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.12 })
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   const container = {
     hidden: { opacity: 0, y: 40 },
@@ -116,10 +118,13 @@ export default function ChatbotIntegrationSection() {
             </ul>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button className="rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg">
+              <Button
+                onClick={() => setIsContactModalOpen(true)}
+                className="rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg"
+              >
                 Discuter de l’intégration
               </Button>
-               {/* 
+              {/* 
                
                <Button
                 variant="secondary"
@@ -128,7 +133,6 @@ export default function ChatbotIntegrationSection() {
                 Voir des exemples
               </Button> 
                 */}
-              
             </div>
           </motion.div>
 
@@ -200,11 +204,19 @@ export default function ChatbotIntegrationSection() {
 
         {/* CTA footer */}
         <motion.div variants={item} className="mt-8 text-center">
-          <Button className="px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg">
+          <Button
+            onClick={() => setIsContactModalOpen(true)}
+            className="px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg"
+          >
             Parler de mon projet
           </Button>
         </motion.div>
       </motion.div>
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        initialMessage="Bonjour, je suis intéressé(e) par l'intégration d'un chatbot sur mon site web existant. Pourriez-vous me donner plus d'informations sur vos services d'intégration et les fonctionnalités disponibles ?"
+      />
     </section>
   )
 }

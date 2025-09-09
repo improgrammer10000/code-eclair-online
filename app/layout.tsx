@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Développeur spécialisé en création d'applications mobiles et sites web. Transformez vos idées en réalité numérique avec des solutions sur mesure.",
   generator: "Code éclair",
-  metadataBase: new URL("https://www.code-eclair.fr"),
+  metadataBase: new URL("https://code-eclair.fr"),
   robots: {
     index: true,
     follow: true,
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     title: "Code éclair - service de création d'app mobile & site web",
     description:
       "Des solutions web & mobile sur mesure. De l'idée à la mise en ligne, nous réalisons vos projets numériques.",
-    url: "https://www.code-eclair.fr",
+    url: "https://code-eclair.fr",
     siteName: "Code éclair",
     images: [
       {
-        url: "/og-image.jpg", // place ce fichier dans /public
+        url: "https://code-eclair.fr/og-image.jpg", // place ce fichier dans /public
         width: 1200,
         height: 630,
         alt: "Code éclair - votre partenaire web & mobile",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Code éclair - service de création d'app mobile & site web",
     description:
       "Développeur spécialisé en création d'applications mobiles et sites web. Transformez vos idées en réalité numérique avec des solutions sur mesure.",
-    images: ["/og-image.jpg"]
+    images: ["https://code-eclair.fr/og-image.jpg"]
   },
   icons: {
     icon: [
@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  alternates: { canonical: "https://code-eclair.fr" },
 }
 
 export default function RootLayout({
@@ -77,8 +78,8 @@ html {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Code éclair",
-              url: "https://www.code-eclair.fr",
-              logo: "https://www.code-eclair.fr/logo.png",
+              url: "https://code-eclair.fr",
+              logo: "https://code-eclair.fr/logo.png",
               sameAs: [
                 "https://www.linkedin.com/in/thomas-paredes-2560932b0/"
               ],

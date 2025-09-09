@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -7,25 +6,20 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="flex flex-col items-center space-y-4">
           <Image src="/logo.svg" alt="Code éclair Logo" width={100} height={58} className="h-16 w-auto" />
-          <p className="text-lg">Code éclair - Votre partenaire pour des expériences web exceptionnelles.</p>
+          <p className="text-lg">Code éclair - Développement de sites web et d'applications mobiles sur mesure.</p>
         </div>
-        <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium">
-          <Link href="#" className="hover:text-white transition-colors">
-            Accueil
-          </Link>
-          <Link href="#services" className="hover:text-white transition-colors">
-            Services
-          </Link>
-          <Link href="#projets" className="hover:text-white transition-colors">
-            Projets
-          </Link>
-          <Link href="#pourquoi-nous" className="hover:text-white transition-colors">
-            Pourquoi nous choisir
-          </Link>
-          <Link href="#contact" className="hover:text-white transition-colors">
-            Contact
-          </Link>
-        </nav>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="text-center md:text-left">
+            <h3 className="text-white font-semibold mb-3">Contact</h3>
+            <p className="text-gray-400 text-sm mb-2">📧 contact@code-eclair.fr</p>
+            <p className="text-gray-400 text-sm">⏱️ Réponse sous 24h (hors dimanche)</p>
+          </div>
+          <div className="text-center md:text-right">
+            <h3 className="text-white font-semibold mb-3">Notre engagement</h3>
+            <p className="text-gray-400 text-sm mb-2">✅ Projets livrés dans les délais</p>
+            <p className="text-gray-400 text-sm">🔒 Données sécurisées et confidentielles</p>
+          </div>
+        </div>
         <div className="border-t border-gray-700 pt-8 mt-8">
           <p className="text-sm">&copy; {new Date().getFullYear()} Code éclair. Tous droits réservés.</p>
         </div>
